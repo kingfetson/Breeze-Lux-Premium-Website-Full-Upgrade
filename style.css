@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --green: #28a745;
+  --dark-green: #1e7e34;
+  --yellow: #ffcc00;
+  --dark: #121212;
+  --white: #ffffff;
+  --gray: #777;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: #222;
+  line-height: 1.7;
+  background: #f7f7f7;
+}
+
+h1,h2,h3,h4 {
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+#scrollProgress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  animation: fadeIn 1s e
