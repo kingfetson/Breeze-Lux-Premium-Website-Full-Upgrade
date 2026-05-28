@@ -1,37 +1,187 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* Custom CSS - Breeze Lux Cleaners */
+/* TailwindCSS handles most styling, this file contains custom overrides and animations */
 
-:root {
-  --green: #28a745;
-  --dark-green: #1e7e34;
-  --yellow: #ffcc00;
-  --dark: #121212;
-  --white: #ffffff;
-  --gray: #777;
-}
+/* Tailwind configuration extensions are defined via CDN, 
+   these are additional custom styles beyond Tailwind's utilities */
 
+/* Google Fonts fallback & smooth rendering */
 body {
-  font-family: 'Inter', sans-serif;
-  color: #222;
-  line-height: 1.7;
-  background: #f7f7f7;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-h1,h2,h3,h4 {
-  font-family: 'Poppins', sans-serif;
+h1, h2, h3, h4, .font-heading {
+    font-family: 'Poppins', sans-serif;
 }
 
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
+/* Custom scrollbar - premium dark theme */
+::-webkit-scrollbar {
+    width: 6px;
 }
 
-#scrollProgress {
-  position: fixed;
-  top: 0;
-  left: 0;
-  animation: fadeIn 1s e
+::-webkit-scrollbar-track {
+    background: #121212;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #28a745;
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ffcc00;
+}
+
+/* Glassmorphism & lift effects */
+.glass-card {
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(0px);
+    transition: all 0.3s ease;
+}
+
+.hover-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.12);
+}
+
+/* Before/After Comparison Slider Styling */
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 380px;
+    overflow: hidden;
+    border-radius: 28px;
+    box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.35);
+    cursor: ew-resize;
+}
+
+.slider-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center 30%;
+    pointer-events: none;
+}
+
+.before-img {
+    background-image: linear-gradient(95deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.05) 100%), url('https://images.unsplash.com/photo-1558317374-067fb5f30001?auto=format&fit=crop&q=80&w=900&h=700');
+}
+
+.after-img {
+    background-image: linear-gradient(95deg, rgba(40, 167, 69, 0.02) 0%, rgba(0, 0, 0, 0) 100%), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=900&h=700');
+    width: 50%;
+    border-right: 2px solid rgba(255, 204, 0, 0.6);
+}
+
+.slider-handle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    background: #ffcc00;
+    cursor: ew-resize;
+    transform: translateX(-50%);
+    z-index: 15;
+    box-shadow: 0 0 12px #ffcc00;
+}
+
+.slider-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 48px;
+    height: 48px;
+    background: #28a745;
+    color: white;
+    border-radius: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+    z-index: 20;
+    font-size: 1.3rem;
+    border: 2px solid #ffcc00;
+}
+
+/* Responsive slider adjustments */
+@media (max-width: 768px) {
+    .slider-container {
+        height: 280px;
+    }
+    
+    .slider-button {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+}
+
+/* Animation keyframes (Tailwind extended) */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Mobile menu animation */
+#mobile-menu {
+    transition: all 0.3s ease;
+}
+
+/* Focus ring consistency */
+input:focus, select:focus, textarea:focus, button:focus {
+    outline: none;
+}
+
+/* Smooth anchor scroll offset (for fixed header) */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom Tailwind color utilities (fallback) */
+.bg-brand-dark { background-color: #121212; }
+.bg-brand-green { background-color: #28a745; }
+.bg-brand-yellow { background-color: #ffcc00; }
+.text-brand-green { color: #28a745; }
+.text-brand-yellow { color: #ffcc00; }
+.border-brand-green { border-color: #28a745; }
+
+/* Hover transitions */
+.transition-all {
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+}
